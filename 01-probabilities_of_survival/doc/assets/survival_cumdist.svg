@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   class="svglite"
+   width="460.80pt"
+   height="288.00pt"
+   viewBox="0 0 460.80 288.00"
+   version="1.1"
+   id="svg75"
+   sodipodi:docname="survival_cumdist.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <metadata
+     id="metadata79">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="3840"
+     inkscape:window-height="2030"
+     id="namedview77"
+     showgrid="false"
+     inkscape:zoom="2.4583333"
+     inkscape:cx="192.28473"
+     inkscape:cy="192"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg75" />
+  <defs
+     id="defs4">
+    <style
+       type="text/css"
+       id="style2"><![CDATA[
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+  ]]></style>
+  </defs>
+  <defs
+     id="defs11">
+    <clipPath
+       id="cpMC4wMHw0NjAuODB8MC4wMHwyODguMDA=">
+      <rect
+         x="0.00"
+         y="0.00"
+         width="460.80"
+         height="288.00"
+         id="rect8" />
+    </clipPath>
+  </defs>
+  <g
+     clip-path="url(#cpMC4wMHw0NjAuODB8MC4wMHwyODguMDA=)"
+     id="g73">
+    <polyline
+       points="40.47,256.55 44.62,245.25 48.77,234.46 52.92,224.15 57.07,214.31 61.22,204.91 65.37,195.93 69.51,187.36 73.66,179.18 77.81,171.36 81.96,163.89 86.11,156.76 90.26,149.95 94.40,143.45 98.55,137.24 102.70,131.31 106.85,125.65 111.00,120.24 115.15,115.07 119.30,110.14 123.44,105.43 127.59,100.93 131.74,96.64 135.89,92.53 140.04,88.62 144.19,84.87 148.33,81.30 152.48,77.89 156.63,74.63 160.78,71.52 164.93,68.54 169.08,65.71 173.23,63.00 177.37,60.41 181.52,57.93 185.67,55.57 189.82,53.32 193.97,51.17 198.12,49.11 202.26,47.15 206.41,45.27 210.56,43.48 214.71,41.77 218.86,40.14 223.01,38.58 227.16,37.09 231.30,35.66 235.45,34.31 239.60,33.01 243.75,31.77 247.90,30.59 252.05,29.46 256.19,28.38 260.34,27.35 264.49,26.36 268.64,25.42 272.79,24.52 276.94,23.67 281.09,22.85 285.23,22.07 289.38,21.32 293.53,20.61 297.68,19.93 301.83,19.28 305.98,18.66 310.12,18.06 314.27,17.50 318.42,16.96 322.57,16.44 326.72,15.95 330.87,15.47 335.02,15.02 339.16,14.60 343.31,14.18 347.46,13.79 351.61,13.42 355.76,13.06 359.91,12.72 364.05,12.39 368.20,12.08 372.35,11.79 376.50,11.50 380.65,11.23 384.80,10.97 388.95,10.72 393.09,10.49 397.24,10.26 401.39,10.05 405.54,9.84 409.69,9.65 413.84,9.46 417.98,9.28 422.13,9.11 426.28,8.95 430.43,8.79 434.58,8.64 438.73,8.50 442.88,8.36 447.02,8.23 451.17,8.11 455.32,7.99 "
+       style="stroke-width: 3.20; stroke-linecap: butt;"
+       id="polyline17" />
+    <polyline
+       points="40.47,256.55 40.47,5.48 "
+       style="stroke-width: 1.07; stroke-linecap: butt;"
+       id="polyline25" />
+    <text
+       x="35.54"
+       y="259.68"
+       text-anchor="end"
+       style="font-size: 8.80px; fill: #4D4D4D; font-family: Roboto;"
+       textLength="17.16px"
+       lengthAdjust="spacingAndGlyphs"
+       id="text27">0.00</text>
+    <text
+       x="35.54"
+       y="196.91"
+       text-anchor="end"
+       style="font-size: 8.80px; fill: #4D4D4D; font-family: Roboto;"
+       textLength="17.16px"
+       lengthAdjust="spacingAndGlyphs"
+       id="text29">0.25</text>
+    <text
+       x="35.54"
+       y="134.14"
+       text-anchor="end"
+       style="font-size: 8.80px; fill: #4D4D4D; font-family: Roboto;"
+       textLength="17.16px"
+       lengthAdjust="spacingAndGlyphs"
+       id="text31">0.50</text>
+    <text
+       x="35.54"
+       y="71.37"
+       text-anchor="end"
+       style="font-size: 8.80px; fill: #4D4D4D; font-family: Roboto;"
+       textLength="17.16px"
+       lengthAdjust="spacingAndGlyphs"
+       id="text33">0.75</text>
+    <text
+       x="35.54"
+       y="8.61"
+       text-anchor="end"
+       style="font-size: 8.80px; fill: #4D4D4D; font-family: Roboto;"
+       textLength="17.16px"
+       lengthAdjust="spacingAndGlyphs"
+       id="text35">1.00</text>
+    <polyline
+       points="37.73,256.55 40.47,256.55 "
+       style="stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;"
+       id="polyline37" />
+    <polyline
+       points="37.73,193.78 40.47,193.78 "
+       style="stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;"
+       id="polyline39" />
+    <polyline
+       points="37.73,131.01 40.47,131.01 "
+       style="stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;"
+       id="polyline41" />
+    <polyline
+       points="37.73,68.25 40.47,68.25 "
+       style="stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;"
+       id="polyline43" />
+    <polyline
+       points="37.73,5.48 40.47,5.48 "
+       style="stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;"
+       id="polyline45" />
+    <polyline
+       points="40.47,256.55 455.32,256.55 "
+       style="stroke-width: 1.07; stroke-linecap: butt;"
+       id="polyline47" />
+    <polyline
+       points="40.47,259.29 40.47,256.55 "
+       style="stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;"
+       id="polyline49" />
+    <polyline
+       points="130.56,259.29 130.56,256.55 "
+       style="stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;"
+       id="polyline51" />
+    <polyline
+       points="220.64,259.29 220.64,256.55 "
+       style="stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;"
+       id="polyline53" />
+    <polyline
+       points="310.72,259.29 310.72,256.55 "
+       style="stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;"
+       id="polyline55" />
+    <polyline
+       points="400.81,259.29 400.81,256.55 "
+       style="stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;"
+       id="polyline57" />
+    <text
+       x="40.47"
+       y="267.74"
+       text-anchor="middle"
+       style="font-size: 8.80px; fill: #4D4D4D; font-family: Roboto;"
+       textLength="4.95px"
+       lengthAdjust="spacingAndGlyphs"
+       id="text59">0</text>
+    <text
+       x="130.56"
+       y="267.74"
+       text-anchor="middle"
+       style="font-size: 8.80px; fill: #4D4D4D; font-family: Roboto;"
+       textLength="9.89px"
+       lengthAdjust="spacingAndGlyphs"
+       id="text61">10</text>
+    <text
+       x="220.64"
+       y="267.74"
+       text-anchor="middle"
+       style="font-size: 8.80px; fill: #4D4D4D; font-family: Roboto;"
+       textLength="9.89px"
+       lengthAdjust="spacingAndGlyphs"
+       id="text63">20</text>
+    <text
+       x="310.72"
+       y="267.74"
+       text-anchor="middle"
+       style="font-size: 8.80px; fill: #4D4D4D; font-family: Roboto;"
+       textLength="9.89px"
+       lengthAdjust="spacingAndGlyphs"
+       id="text65">30</text>
+    <text
+       x="400.81"
+       y="267.74"
+       text-anchor="middle"
+       style="font-size: 8.80px; fill: #4D4D4D; font-family: Roboto;"
+       textLength="9.89px"
+       lengthAdjust="spacingAndGlyphs"
+       id="text67">40</text>
+    <text
+       x="247.90"
+       y="280.17"
+       text-anchor="middle"
+       style="font-size: 11.00px; font-family: Roboto;"
+       textLength="32.90px"
+       lengthAdjust="spacingAndGlyphs"
+       id="text69">Time x</text>
+    <text
+       transform="rotate(-90,71.405,59.605)"
+       style="font-size:11px;font-family:Roboto;text-anchor:middle"
+       textLength="144.28999"
+       lengthAdjust="spacingAndGlyphs"
+       id="text71">Cumulative probability P(X≤x)</text>
+  </g>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11px;line-height:1000;font-family:Roboto;-inkscape-font-specification:Roboto;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.75"
+     x="46.55085"
+     y="13.728809"
+     id="text1578"><tspan
+       sodipodi:role="line"
+       id="tspan1576"
+       x="46.55085"
+       y="13.728809"
+       style="stroke-width:0.75">Distribution function F(x)</tspan></text>
+</svg>
