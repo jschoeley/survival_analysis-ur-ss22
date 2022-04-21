@@ -21,3 +21,9 @@ Please install the current versions of
   - [Recap probability densities](https://youtu.be/hDjcxi9p0ak)
   - [Recap random variables](https://youtu.be/3v9w79NhsfI)
   - [Recap calculus](https://youtu.be/WUvTyaaNkzM)
+- Thu Apr 21, 09-11:  [**From Data to Distribution**](https://github.com/jschoeley/survival_analysis-ur-ss22/tree/main/02-from_data_to_distribution)
+  - [Lecture slides](https://github.com/jschoeley/survival_analysis-ur-ss22/blob/main/02-from_data_to_distribution/doc/02-from_data_to_distribution.pdf)
+  - [Lecture R code](https://github.com/jschoeley/survival_analysis-ur-ss22/tree/main/02-from_data_to_distribution/src/labwork.R)
+  - [Breastcancer data](https://github.com/jschoeley/survival_analysis-ur-ss22/tree/main/02-from_data_to_distribution/dat/breastcancer.csv)
+  - [R code for the interactive likelihood demonstration](https://github.com/jschoeley/survival_analysis-ur-ss22/tree/main/02-from_data_to_distribution/src/interactive_likelihood_demonstration.R)
+  - **Homework** Using the breastcancer data choose a survival distribution (e.g. Exponential, Weibull, Gamma, Log-Normal) and fit it to the data via Maximum Likelihood. Use R. You can adapt the script we wrote today.
