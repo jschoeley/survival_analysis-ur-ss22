@@ -28,3 +28,4 @@ vignettes/*.pdf
 
 # Rpubs
 rsconnect
+.Rproj.user
