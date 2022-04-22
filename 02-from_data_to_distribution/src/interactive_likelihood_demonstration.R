@@ -7,7 +7,6 @@ library(ggplot2)
 library(patchwork)
 library(flexsurv)
 
-
 # Data ------------------------------------------------------------
 
 bc <-
