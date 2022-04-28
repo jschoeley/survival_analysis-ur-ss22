@@ -5,7 +5,7 @@ library(survival)
 
 # Load data -------------------------------------------------------
 
-bc <- read_csv(file = '02-likelihood_estimation/dat/breastcancer.csv')
+bc <- read_csv(file = '02-from_data_to_distribution/dat/breastcancer.csv')
 
 # Explore data ----------------------------------------------------
 

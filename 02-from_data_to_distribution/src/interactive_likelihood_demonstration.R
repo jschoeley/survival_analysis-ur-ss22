@@ -93,6 +93,7 @@ ui <- fluidPage(
             id = "tabset",
             tabPanel("Distribution", plotOutput("distPlot")),
             tabPanel("Likelihood contributions", tableOutput('table')),
+            tabPanel("Likelihood surface", plotOutput('llsurface'))
           ),
            h5('Log-likelihood'),
            verbatimTextOutput('likelihood')
@@ -140,6 +141,10 @@ server <- function(input, output, session) {
     if (is.null(v$samples)) {
       l$samples <- as.numeric(NA)
     }
+    l$loglikelihood <-
+      GompertzLogDensity(
+        l$samples, l$guess_a, l$guess_b
+      )
     l
   })
   
@@ -195,21 +200,38 @@ server <- function(input, output, session) {
   
   output$likelihood <- renderPrint({
     
-    loglikelihood <-
-      sum(GompertzLogDensity(params()$samples, params()$guess_a, params()$guess_b))
+    loglikelihood <- sum(params()$loglikelihood)
     loglikelihood
     
   })
   
   output$table <- renderTable({
     
-    loglikelihood <-
-      GompertzLogDensity(
-        params()$samples, params()$guess_a, params()$guess_b
-      )
-    data.frame(`Observation x` = params()$samples,
-               `Log-likelihood contribution` = loglikelihood)
+    data.frame(
+      `Observation x` = params()$samples,
+      `Log-likelihood contribution` = params()$loglikelihood
+    )
     
+  })
+  
+  output$llsurface <- renderPlot({
+    
+    param_surface <- expand.grid(
+      rate = seq(cnst$min_rate, cnst$max_rate, length.out = 100),
+      b = seq(cnst$min_b, cnst$max_b, length.out = 100)
+    )
+    
+    for (i in 1:nrow(param_surface)) {
+      param_surface[i,'ll'] <- sum(GompertzLogDensity(
+        params()$samples, param_surface[i,'rate']*1e-5, param_surface[i,'b']
+      ))
+    }
+    
+    ggplot(param_surface) +
+      geom_contour(aes(x = rate, y = b, z = log(-ll))) +
+      annotate('point', x = params()$guess_a*1e5, y = params()$guess_b) +
+      coord_cartesian(xlim = c(cnst$min_rate, cnst$max_rate), ylim = c(cnst$min_b, cnst$max_b))
+
   })
   
 }

@@ -27,3 +27,7 @@ Please install the current versions of
   - [Breastcancer data](https://github.com/jschoeley/survival_analysis-ur-ss22/tree/main/02-from_data_to_distribution/dat/breastcancer.csv)
   - [R code for the interactive likelihood demonstration](https://github.com/jschoeley/survival_analysis-ur-ss22/tree/main/02-from_data_to_distribution/src/interactive_likelihood_demonstration.R)
   - **Homework** Ensure that you have a working installation of R and RStudio. Make a new folder for this course. Associate this folder with an [RStudio project](https://support.rstudio.com/hc/en-us/articles/200526207-Using-RStudio-Projects). Write and save an R script that loads the `breastcancer` data into the R session.
+- Thu Apr 28, 09-11: [**Incomplete Observations**](https://github.com/jschoeley/survival_analysis-ur-ss22/tree/main/02-from_data_to_distribution)
+  - [Lecture slides](https://github.com/jschoeley/survival_analysis-ur-ss22/blob/main/03-incomplete_observations/doc/03-incomplete_observations.pdf)
+  - [Breastcancer data](https://github.com/jschoeley/survival_analysis-ur-ss22/tree/main/02-from_data_to_distribution/dat/breastcancer.csv)
+  - [R code for the interactive likelihood demonstration](https://github.com/jschoeley/survival_analysis-ur-ss22/tree/main/02-from_data_to_distribution/src/interactive_likelihood_demonstration.R)
