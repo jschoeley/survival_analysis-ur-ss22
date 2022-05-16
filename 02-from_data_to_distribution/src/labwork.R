@@ -67,7 +67,7 @@ GompertzLikelihood <- function (theta, x, log = TRUE) {
   }
 }
 
-x <- bc_clean$weeks[bc_clean$positive=='positive'&!bc_clean$censored]
+x <- bc_clean$months[bc_clean$positive=='positive'&!bc_clean$censored]
 
 theta_ml_fit <- optim(
   par = c(a = log(1/mean(x)), b = -0.01),

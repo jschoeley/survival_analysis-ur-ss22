@@ -6,6 +6,7 @@ library(shiny)
 library(ggplot2)
 library(patchwork)
 library(flexsurv)
+library(rgl)
 
 # Data ------------------------------------------------------------
 
@@ -75,6 +76,11 @@ ui <- fluidPage(
           ),
           actionButton('randomize', 'Randomize Parameters!', width = '100%'),
           actionButton('sample', 'Draw Sample!', width = '100%'),
+          sliderInput("sample_size",
+                      "Sample size",
+                      min = 1,
+                      max = 100,
+                      value = 10),
           sliderInput("guess_rate",
                       "Guess rate",
                       min = 0,
@@ -93,7 +99,7 @@ ui <- fluidPage(
             id = "tabset",
             tabPanel("Distribution", plotOutput("distPlot")),
             tabPanel("Likelihood contributions", tableOutput('table')),
-            tabPanel("Likelihood surface", plotOutput('llsurface'))
+            tabPanel("Likelihood surface", rglwidgetOutput('llsurface', width = "auto", height = "300px"))
           ),
            h5('Log-likelihood'),
            verbatimTextOutput('likelihood')
@@ -111,8 +117,7 @@ server <- function(input, output, session) {
     min_rate = 0,
     max_rate = 3000,
     min_b = -0.05,
-    max_b = 0.05,
-    n_sample = 20
+    max_b = 0.05
   )
   
   v <- reactiveValues()
@@ -126,7 +131,7 @@ server <- function(input, output, session) {
   
   observeEvent(input$sample, {
     v$samples <-
-      GompertzSample(cnst$n_sample,
+      GompertzSample(input$sample_size,
                      input$true_rate/cnst$rate_scale, input$true_slope)
   })
   
@@ -145,6 +150,17 @@ server <- function(input, output, session) {
       GompertzLogDensity(
         l$samples, l$guess_a, l$guess_b
       )
+    rate = seq(cnst$min_rate, cnst$max_rate, length.out = 100)/cnst$rate_scale
+    b = seq(cnst$min_b, cnst$max_b, length.out = 100)
+    l$loglikelihoodsurface <-
+      matrix(NA, nrow = 100, ncol = 100)
+    for (i in 1:100) {
+      for (j in 1:100) {
+        l$loglikelihoodsurface[i,j] <-
+          sum(GompertzLogDensity(l$samples, rate[i], b[j]))
+        l$loglikelihoodsurface[is.infinite(l$loglikelihoodsurface)] <- NA
+      }
+    }
     l
   })
   
@@ -214,24 +230,17 @@ server <- function(input, output, session) {
     
   })
   
-  output$llsurface <- renderPlot({
+  output$llsurface <- renderRglwidget({
     
-    param_surface <- expand.grid(
-      rate = seq(cnst$min_rate, cnst$max_rate, length.out = 100),
-      b = seq(cnst$min_b, cnst$max_b, length.out = 100)
+    try(close3d())
+    persp3d(
+      x = params()$loglikelihoodsurface,
+      zlim = c(-1000, range(params()$loglikelihoodsurface, na.rm = TRUE)[2]),
+      col = 'lightblue', box = FALSE
     )
-    
-    for (i in 1:nrow(param_surface)) {
-      param_surface[i,'ll'] <- sum(GompertzLogDensity(
-        params()$samples, param_surface[i,'rate']*1e-5, param_surface[i,'b']
-      ))
-    }
-    
-    ggplot(param_surface) +
-      geom_contour(aes(x = rate, y = b, z = log(-ll))) +
-      annotate('point', x = params()$guess_a*1e5, y = params()$guess_b) +
-      coord_cartesian(xlim = c(cnst$min_rate, cnst$max_rate), ylim = c(cnst$min_b, cnst$max_b))
 
+    rglwidget()
+    
   })
   
 }

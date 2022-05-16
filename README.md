@@ -31,3 +31,5 @@ Please install the current versions of
   - [Lecture slides](https://github.com/jschoeley/survival_analysis-ur-ss22/blob/main/03-incomplete_observations/doc/03-incomplete_observations.pdf)
   - [Breastcancer data](https://github.com/jschoeley/survival_analysis-ur-ss22/tree/main/02-from_data_to_distribution/dat/breastcancer.csv)
   - [R code for the interactive likelihood demonstration](https://github.com/jschoeley/survival_analysis-ur-ss22/tree/main/02-from_data_to_distribution/src/interactive_likelihood_demonstration.R)
+- Thu May 12, 09-11: [**Trial Exam**](https://github.com/jschoeley/survival_analysis-ur-ss22/tree/main/04-trial_exam)
+  - [Trial Exam and Solutions](https://github.com/jschoeley/survival_analysis-ur-ss22/blob/main/04-trial_exam/trial_exam.pdf)
