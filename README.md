@@ -36,5 +36,10 @@ Please install the current versions of
 - Thu May 19, 09-11: **Exam**
 - Thu June 02, 09-11: [**The Kaplan-Meier Estimator**](https://github.com/jschoeley/survival_analysis-ur-ss22/tree/main/06-the_kaplan_meier_estimator)
   - [Lecture slides](https://github.com/jschoeley/survival_analysis-ur-ss22/blob/main/06-the_kaplan_meier_estimator/doc/06-the_kaplan_meier_estimator.pdf)
+  - [Lecture R code](https://github.com/jschoeley/survival_analysis-ur-ss22/blob/main/06-the_kaplan_meier_estimator/src/06-the_kaplan_meier_estimator.R)
   - [Breastcancer data](https://github.com/jschoeley/survival_analysis-ur-ss22/tree/main/06-the_kaplan_meier_estimator/dat/breastcancer.csv)
+  - Cheat sheets are short introductions to certain topics:
+    - [R Language Cheat Sheet](https://github.com/jschoeley/survival_analysis-ur-ss22/blob/main/06-the_kaplan_meier_estimator/doc/r_cheat_sheet.pdf)
+    - [ggplot2 Cheat Sheet](https://github.com/jschoeley/survival_analysis-ur-ss22/blob/main/06-the_kaplan_meier_estimator/doc/ggplot_cheat_sheet.pdf)
+    - [R-Studio Cheat Sheet](https://github.com/jschoeley/survival_analysis-ur-ss22/blob/main/06-the_kaplan_meier_estimator/doc/rstudio_cheat_sheet.pdf)
   - **Homework** Using R, produce a Kaplan-Meier plot related to the topic of your eventual seminar paper ("Hausarbeit"). You don’t need to have all the data for your topic yet, but you need to find “some” related data. Be prepared to present your plot to the group. Think about study time start and end, event of interest, and censoring. You may compare multiple groups, but a KM-plot for a single group is fine as well.
