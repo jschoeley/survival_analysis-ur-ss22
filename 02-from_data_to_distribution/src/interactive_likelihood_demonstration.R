@@ -6,6 +6,7 @@ library(shiny)
 library(ggplot2)
 library(patchwork)
 library(flexsurv)
+library(survival)
 library(rgl)
 
 # Data ------------------------------------------------------------
@@ -61,6 +62,7 @@ ui <- fluidPage(
     sidebarLayout(
         sidebarPanel(
           checkboxInput("showtrue", label = 'Show truth', value = TRUE),
+          checkboxInput("showkm", label = 'Show Kaplan-Meier', value = FALSE),
           conditionalPanel(
             "input.showtrue == true",
             sliderInput("true_rate",
@@ -133,6 +135,9 @@ server <- function(input, output, session) {
     v$samples <-
       GompertzSample(input$sample_size,
                      input$true_rate/cnst$rate_scale, input$true_slope)
+    km <- survfit(Surv(v$samples)~1)
+    v$km <- c(1, km[['surv']])
+    v$x <- c(0, km[['time']])
   })
   
   params <- reactive({
@@ -209,8 +214,33 @@ server <- function(input, output, session) {
         coord_cartesian(clip = 'off')
       )
     
-    plot_hx + plot_fx +
-    patchwork::plot_layout(nrow = 2)
+    plot_sx <-
+      ggplot() +
+      list(
+        if (input$showtrue) {
+          geom_function(
+            fun = GompertzSurvival,
+            args = list(a = params()$true_a, b = params()$true_b)
+          )} else { NULL },
+        if (input$showkm) {
+          geom_step(
+            aes(x = v$x, y = v$km)
+          )} else { NULL },
+        geom_function(
+          fun = GompertzSurvival,
+          args = list(a = params()$guess_a, b = params()$guess_b),
+          color = 'blue', lty = 2
+        ),
+        scale_x_continuous(limits = c(0, 100),
+                           expand = c(0,0)),
+        scale_y_continuous(limits = c(0, 1), expand = c(0,0)),
+        labs(x = 'Time x', y = 'Probability of Survival S(x)'),
+        theme_classic(),
+        coord_cartesian(clip = 'off')
+      )
+    
+    plot_hx + plot_fx + plot_sx +
+    patchwork::plot_layout(nrow = 3)
     
   })
   

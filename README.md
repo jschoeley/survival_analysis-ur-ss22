@@ -33,3 +33,8 @@ Please install the current versions of
   - [R code for the interactive likelihood demonstration](https://github.com/jschoeley/survival_analysis-ur-ss22/tree/main/02-from_data_to_distribution/src/interactive_likelihood_demonstration.R)
 - Thu May 12, 09-11: [**Trial Exam**](https://github.com/jschoeley/survival_analysis-ur-ss22/tree/main/04-trial_exam)
   - [Trial Exam and Solutions](https://github.com/jschoeley/survival_analysis-ur-ss22/blob/main/04-trial_exam/trial_exam.pdf)
+- Thu May 19, 09-11: **Exam**
+- Thu June 02, 09-11: [**The Kaplan-Meier Estimator**](https://github.com/jschoeley/survival_analysis-ur-ss22/tree/main/06-the_kaplan_meier_estimator)
+  - [Lecture slides](https://github.com/jschoeley/survival_analysis-ur-ss22/blob/main/06-the_kaplan_meier_estimator/doc/06-the_kaplan_meier_estimator.pdf)
+  - [Breastcancer data](https://github.com/jschoeley/survival_analysis-ur-ss22/tree/main/06-the_kaplan_meier_estimator/dat/breastcancer.csv)
+  - **Homework** Using R, produce a Kaplan-Meier plot related to the topic of your eventual seminar paper ("Hausarbeit"). You don’t need to have all the data for your topic yet, but you need to find “some” related data. Be prepared to present your plot to the group. Think about study time start and end, event of interest, and censoring. You may compare multiple groups, but a KM-plot for a single group is fine as well.
