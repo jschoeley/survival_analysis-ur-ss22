@@ -109,8 +109,9 @@ ui <- fluidPage(
                         value = 0)
           ),
           checkboxInput("showkm", label = 'Show Kaplan-Meier', value = FALSE),
+          checkboxInput("showkmci", label = 'Show KM CI', value = FALSE),
           checkboxInput('showll', label = 'Show Log-likelihood', value = FALSE),
-          checkboxInput("showlr", label = 'Show Logrank test', value = FALSE)
+          checkboxInput("showlr", label = 'Show Logrank test', value = FALSE),
         ),
         
         # Show a plot of the generated distribution
@@ -183,6 +184,8 @@ server <- function(input, output, session) {
     v$x <- km[['time']]
     v$atrisk <- km[['n.risk']]
     v$event <- km[['n.event']]
+    v$cihi <- km[['upper']]
+    v$cilo <- km[['lower']]
     v$logrank <- survdiff(Surv(v$samples, event = 1-v$censored, type = 'right')~v$strata)
   })
   
@@ -201,6 +204,8 @@ server <- function(input, output, session) {
     l$km <- v$km
     l$atrisk <- v$atrisk
     l$event <- v$event
+    l$cihi <- v$cihi
+    l$cilo <- v$cilo
     l$logrank <- v$logrank
     
     if (is.null(v$samples)) {
@@ -332,7 +337,27 @@ server <- function(input, output, session) {
             annotate(
               'step', x = params()$x[params()$strata == 1],
               y = params()$km[params()$strata == 1], color = 'blue'
-            )
+            ),
+            if (input$showkmci) {
+              list(
+                annotate(
+                  'step', x = params()$x[params()$strata == 0], lty = 2,
+                  y = params()$cilo[params()$strata == 0], color = 'red'
+                ),
+                annotate(
+                  'step', x = params()$x[params()$strata == 1], lty = 2,
+                  y = params()$cilo[params()$strata == 1], color = 'blue'
+                ),
+                annotate(
+                  'step', x = params()$x[params()$strata == 0], lty = 2,
+                  y = params()$cihi[params()$strata == 0], color = 'red'
+                ),
+                annotate(
+                  'step', x = params()$x[params()$strata == 1], lty = 2,
+                  y = params()$cihi[params()$strata == 1], color = 'blue'
+                )
+              )
+            }
           )
         } else { NULL },
         if (input$showguess) {
