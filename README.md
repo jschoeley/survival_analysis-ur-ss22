@@ -43,3 +43,11 @@ Please install the current versions of
     - [ggplot2 Cheat Sheet](https://github.com/jschoeley/survival_analysis-ur-ss22/blob/main/06-the_kaplan_meier_estimator/doc/ggplot_cheat_sheet.pdf)
     - [R-Studio Cheat Sheet](https://github.com/jschoeley/survival_analysis-ur-ss22/blob/main/06-the_kaplan_meier_estimator/doc/rstudio_cheat_sheet.pdf)
   - **Homework** Using R, produce a Kaplan-Meier plot related to the topic of your eventual seminar paper ("Hausarbeit"). You don’t need to have all the data for your topic yet, but you need to find “some” related data. Be prepared to present your plot to the group. Think about study time start and end, event of interest, and censoring. You may compare multiple groups, but a KM-plot for a single group is fine as well.
+- Thu June 16, 09-11: [**The Logrank Test**](https://github.com/jschoeley/survival_analysis-ur-ss22/tree/main/07-the_logrank_test)
+- Thu June 23, 09-11: [**The Cox Proportional Hazards Regression**](https://github.com/jschoeley/survival_analysis-ur-ss22/tree/main/08-the_cox_proportional_hazards_regression)
+
+## Literature
+
+- For dataviz:
+  - [Hadley Wickham: ggplot2](https://ggplot2-book.org/index.html)
+  - [Claus Wilke: Fundamentals of Data Visualization](https://clauswilke.com/dataviz/)
