@@ -294,11 +294,20 @@ server <- function(input, output, session) {
           )
         } else { NULL },
         if (input$model == 'guess') {
-        geom_function(
-          fun = GompertzDensity,
-          args = list(a = params()$guess_a, b = params()$guess_b),
-          color = 'blue', lty = 2
-        )} else { NULL },
+          list(
+            geom_function(
+              fun = GompertzDensity,
+              args = list(a = params()$guess_a, b = params()$guess_b),
+              color = 'blue', lty = 2
+            ),
+            annotate('text', x = 100, y = 0.03,
+                     label = paste0(
+                       'Loglikelihood: ',
+                       formatC(sum(params()$loglikelihood),
+                               format = 'f', digits = 3)
+                     ), hjust = 1
+            )
+          )} else { NULL },
         annotate(
           'point', shape = 1, color = 'red',
           x = params()$samples[params()$censored==0&params()$strata==0],
@@ -423,11 +432,14 @@ server <- function(input, output, session) {
           )
         } else { NULL },
         if (input$model == 'guess') {
-          geom_function(
-            fun = GompertzSurvival,
-            args = list(a = params()$guess_a, b = params()$guess_b),
-            color = 'blue', lty = 2
-          )} else { NULL },
+          list(
+            geom_function(
+              fun = GompertzSurvival,
+              args = list(a = params()$guess_a, b = params()$guess_b),
+              color = 'blue', lty = 2
+            )
+          )
+        } else { NULL },
         scale_x_continuous(limits = c(0, 100),
                            expand = c(0,0)),
         scale_y_continuous(limits = c(0, 1), expand = c(0,0)),
@@ -450,19 +462,22 @@ server <- function(input, output, session) {
   
   output$table <- renderTable({
     
-    data.frame(
-      `Stratum` = ifelse(params()$strata == 0, 'Red', 'Blue'),
-      `Observation x` = params()$samples,
-      `Censored` = params()$censored,
-      `Log-density` = params()$logdensity,
-      `Log-survival` = params()$logsurvival,
-      `Log-likelihood contribution` = params()$loglikelihood
-    )
     
   })
   
   
   output$model_tab <- renderPrint({
+    
+    if (input$model == 'guess') {
+      out <- data.frame(
+        `Stratum` = ifelse(params()$strata == 0, 'Red', 'Blue'),
+        `Observation x` = params()$samples,
+        `Censored` = params()$censored,
+        `Log-density` = params()$logdensity,
+        `Log-survival` = params()$logsurvival,
+        `Log-likelihood contribution` = params()$loglikelihood
+      )
+    }
     
     if (input$model == 'km') {
       # data.frame(

@@ -1,6 +1,4 @@
 # Survival analysis of US fetal mortality
-#
-# H1: The risk of fetal death varies by origin of the mother.
 
 # Load Libraries --------------------------------------------------
 
@@ -13,16 +11,27 @@ library(survminer)
 # functions for data transformation
 library(dplyr)
 # better summary tables for model objects
-library(modelsummary)
+library(gtsummary)
 # transform model output to rectangular table
 library(broom)
 # data visualization
 library(ggplot2)
 
+# Create global objects -------------------------------------------
+
+# I like to keep all figures in a common list, e.g. at one place;
+# this list I call "fig"
+fig <- list()
+# ... same with tables
+tab <- list()
+
 # Load and clean data ---------------------------------------------
 
 # read the breastcancer.csv data into R and give it the name "bc"
-fi <- readRDS("08-the_cox_proportional_hazards_regression/dat/fetoinfant.rds")
+fi <- readRDS('08-the_cox_proportional_hazards_regression/dat/fetoinfant.rds')
+# sample 100,000 cases so that this demonstration needs less ressources
+set.seed(1987)
+fi <- fi[sample(1:nrow(fi), size = 1e5),]
 # check if loading worked
 glimpse(fi)
 summary(fi)
@@ -124,53 +133,64 @@ fi_clean <-
 
 # Descriptive tables ----------------------------------------------
 
-# show conception cohort sizes by sex
-datasummary_crosstab(
-  dod ~ sex,
-  data = fi_clean
-)
+# co-variate composition of sample by event indicator
+tab$cross_strata_by_event <-
+  fi_clean %>%
+  select(type, dod, sex, origin, gestation, event) %>%
+  tbl_summary(by = "event") %>%
+  add_overall() %>%
+  add_p()
+# save the table as document
+tab$cross_strata_by_event %>% as_gt() %>%
+  gt::gtsave(
+    filename = 'cross_strata_by_event.rtf',
+    path = './08-the_cox_proportional_hazards_regression/out/'
+  )
+
+# show distribution of sex by conception cohort
+tab$cross_dod_sex <-
+  fi_clean %>%
+  tbl_cross(row = 'dod', col = 'sex', percent = 'row') %>% 
+  add_p()
+tab$cross_dod_sex %>% as_gt() %>%
+  gt::gtsave(
+    filename = 'cross_dod_sex.rtf',
+    path = './08-the_cox_proportional_hazards_regression/out/'
+  )
 
 # show distribution of maternal origin by conception cohort
-datasummary_crosstab(
-  dod ~ origin,
-  data = fi_clean
-)
+tab$cross_dod_origin <-
+  fi_clean %>%
+  tbl_cross(row = 'dod', col = 'origin', percent = 'row') %>% 
+  add_p()
+tab$cross_dod_origin %>% as_gt() %>%
+  gt::gtsave(
+    filename = 'cross_dod_origin.rtf',
+    path = './08-the_cox_proportional_hazards_regression/out/'
+  )
 
 # show share of fetal deaths (events) by conception cohort
-datasummary_crosstab(
-  origin ~ Factor(event),
-  data = fi_clean
-)
-
-datasummary(
-  Factor(dod) ~ Factor(event)*Factor(sex),
-  statistic = ~ Percent(denom = 'col'),
-  data = fi_clean
-)
-
-datasummary_crosstab(
-  dod ~ sex,
-  data = fi_clean
-)
-
-
-
-# show counts and composition of maternal origin by cohort
-datasummary_crosstab(
-  dod ~ origin,
-  data = fi_clean
-)
-
-# show counts and composition of maternal origin by cohort
-datasummary_crosstab(
-  dod ~ origin,
-  data = fi_clean
-)
+tab$cross_dod_event <-
+  fi_clean %>%
+  tbl_cross(row = 'dod', col = 'event', percent = 'row', digits = 2) %>% 
+  add_p()
+tab$cross_dod_event %>% as_gt() %>%
+  gt::gtsave(
+    filename = 'cross_dod_event.rtf',
+    path = './08-the_cox_proportional_hazards_regression/out/'
+  )
 
 # Create survival object ------------------------------------------
 
 fi_surv <-
-  Surv(time = fi_clean$time, event = fi_clean$event, type = 'right')
+  Surv(
+    # survival or censoring time
+    time = fi_clean$time,
+    # event indicator (1: event, 0: censoring)
+    event = fi_clean$event,
+    # we only consider right censoring
+    type = 'right'
+  )
 
 # Kaplan Meier and Logrank analysis -------------------------------
 
@@ -198,12 +218,15 @@ fi_km_origin_tab <- tidy(fi_km_origin)
 # conf.high: upper end of 95% confidence interval around estimate
 # conf.low: lower end of 95% confidence interval around estimate
 # strata: the group the estimate refers to
-glimpse(fi_km_tab)
+glimpse(fi_km_total_tab)
 
 # using the ggplot library we can take the Kaplan-Meier estimator
 # output table and visualize it
-fi_km_plot <-
+fig$fi_km_plot <-
   ggplot(fi_km_origin_tab) +
+  # add total survival
+  annotate('step', color = 'grey',
+           x = fi_km_total_tab$time, y = fi_km_total_tab$estimate) +
   # show confidence intervals on plot
   geom_step(aes(x = time, y = conf.low, color = strata),
             lty = 1, alpha = 0.3) +
@@ -217,39 +240,51 @@ fi_km_plot <-
   # ) +
   # add kaplan meier estimate to the plot
   geom_step(aes(x = time, y = estimate, color = strata)) +
-  # add total survival
-  annotate('step', color = 'grey',
-           x = fi_km_total_tab$time, y = fi_km_total_tab$estimate) +
   # change the plots theme
-  theme_classic() +
+  theme_classic(base_rect_size = 0) +
   # change the plots labels
   labs(y = 'Probability of Survival', x = 'Weeks of gestation',
        color = 'Maternal origin') +
   facet_wrap(~strata) +
   guides(color = 'none')
-fi_km_plot
+fig$fi_km_plot
 
-ggsave(fi_km_plot, device = 'png', width = 8, height = 6,
-       path = '08-the_cox_proportional_hazards_regression',
+ggsave(fig$fi_km_plot, device = 'png', width = 8, height = 6,
+       path = './08-the_cox_proportional_hazards_regression/out/',
        filename = 'fi_km_plot.png')
 
 # Fit Cox regression models ---------------------------------------
 
-fi_cox_fit <- coxph(fi_surv~sex+dod+origin, data = fi_clean)
-summary(fi_cox_fit)
+# H1: The risk of fetal death varies by origin of the mother
+
+# we fit a Cox Proportional hazards regression model with
+# sex, year of delivery, and maternal origin as predictors
+fi_h1_cox_fit <- coxph(fi_surv~sex+dod+origin, data = fi_clean)
+
+# the summary function, if applied to the cox model fit object,
+# gives us hazard ratios along with confidence intervals.
+# E.g. the risk of fetal death following 24 weeks of gestation
+# when the mother is of non-hispanic Black origin is elevated by
+# a factor of 2.15 (95% CI 1.69, 2.73)
+summary(fi_h1_cox_fit)
 
 # check the proportional hazards assumption
-fi_cox_ph <- cox.zph(fi_cox_fit)
-fi_cox_ph_fig <- ggcoxzph(fi_cox_ph, se = FALSE)
+fi_h1_cox_ph <- cox.zph(fi_h1_cox_fit)
+fi_h1_cox_ph
+# for none of the variables in the model we have significant
+# evidence to reject the proportional hazards assumption
+# additional we can graphically check if the effect of a variable
+# varies over time, which would violate the proportional hazards
+# assumption. For the PH assumption to be true, the plotted line should
+# be flat around 0.
+fi_h1_cox_ph_fig <- ggcoxzph(fi_h1_cox_ph, se = FALSE)
+fi_h1_cox_ph_fig
 
-# produce a model table; the function modelsummary originates from
-# the modelsummary package
-modelsummary(
-  fi_cox_fit,
-  estimate = "{estimate}{stars} [{conf.low}, {conf.high}]",
-  statistic = NULL,
-  exponentiate = TRUE,
-  stars = TRUE,
-  gof_map = c('nobs', 'aic')
-  #output = './08-the_cox_proportional_hazards_regression/fi_cox.docx'
-)
+# produce a model estimate table; the function tbl_regression
+# originates from the modelsummary package
+tab$h1_cox <- tbl_regression(fi_h1_cox_fit, exponentiate = TRUE)
+tab$h1_cox %>% as_gt() %>%
+  gt::gtsave(
+    filename = 'h1_cox.rtf',
+    path = './08-the_cox_proportional_hazards_regression/out/'
+  )
