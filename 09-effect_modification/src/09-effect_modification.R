@@ -2,6 +2,12 @@
 
 # Load Libraries --------------------------------------------------
 
+# If you have trouble installing the packages on Windows,
+# try this command:
+# install.packages(c(
+#   'survminer', 'dplyr', 'gtsummary', 'broom', 'ggplot2', 'multcomp'
+# ), type = 'binary', dependencies = TRUE)
+
 # load the survival package which gives us additional functions for
 # survival analysis
 library(survival)
