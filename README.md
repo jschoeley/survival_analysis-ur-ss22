@@ -46,11 +46,14 @@ Please install the current versions of
   - **Homework** Using R, produce a Kaplan-Meier plot related to the topic of your eventual seminar paper ("Hausarbeit"). You don’t need to have all the data for your topic yet, but you need to find “some” related data. Be prepared to present your plot to the group. Think about study time start and end, event of interest, and censoring. You may compare multiple groups, but a KM-plot for a single group is fine as well.
 - Thu June 16, 09-11: [**The Logrank Test**](https://github.com/jschoeley/survival_analysis-ur-ss22/tree/main/07-the_logrank_test)
 - Thu June 23, 09-11: [**The Cox Proportional Hazards Regression**](https://github.com/jschoeley/survival_analysis-ur-ss22/tree/main/08-the_cox_proportional_hazards_regression)
+  - [Klein & Moeschberger (2003). Survival Analysis. Chapters 8.1, 8.2](https://link.springer.com/book/10.1007/b97377)
+  - [Harrel (2015). Regression modeling strategies. Chapters 20, 21](https://link.springer.com/book/10.1007/978-3-319-19425-7)
 - Thu June 30, 09-11: [**Effect modification**](https://github.com/jschoeley/survival_analysis-ur-ss22/tree/main/09-effect_modification)
 
 ## Literature
 
 - Survival analysis:
+  - [Klein & Moeschberger (2003). Survival Analysis](https://link.springer.com/book/10.1007/b97377) is a classic textbook on survival analysis.
   - [Harrel (2015). Regression modeling strategies](https://link.springer.com/book/10.1007/978-3-319-19425-7) is a great reference for all regression related topics. It's chapters on Survival Analysis feature R code and are very approachable.
   - [Kaplan & Meier (1958). Nonparametric Estimation from Incomplete Observations](https://doi.org/10.2307/2281868). The most cited statistics paper and one of the fundamental methods of survival analysis.
   - [Cox (1958) Regression Models and Life Tables](https://www.jstor.org/stable/2985181?seq=1). The second most cited statistics paper and the other pillar of survival analysis.
