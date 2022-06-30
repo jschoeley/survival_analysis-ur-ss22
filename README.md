@@ -82,7 +82,7 @@ The term paper should be around 20 pages in total and feature all the usual part
 - discussion
 - references
 
-The idea is for you to do a sort of "mini" masters thesis -- a small independent, empirical research project. You may have a look at [my master's thesis](https://github.com/jschoeley/survival_analysis-ur-ss22/blob/main/07-the_logrank_test/doc/schoeley_thesis_demo.pdf) for guidance. You may write in German or English. **Due date is September 30 2022.** Send the finished term paper to <j.schoeley@uni-rostock.de>.
+The idea is for you to do a sort of "mini" masters thesis -- a small independent, empirical research project. You may have a look at [my master's thesis](https://github.com/jschoeley/survival_analysis-ur-ss22/blob/main/07-the_logrank_test/doc/schoeley_thesis_demo.pdf) for guidance. You may write in German or English. Send the finished term paper to <j.schoeley@uni-rostock.de>.
 
 ## Literature
 
